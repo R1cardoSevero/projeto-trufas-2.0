@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trufas & Trufados D'Licia</title>
+</head>
+
+<body>
+    <header id="topo">
+        <nav>
+            <a href="">
+                <h2>Trufas e Trufados D'Licia</h2>
+            </a>
+            <input type="checkbox">
+            <div id="hamburguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <article>
+                <a href="#sobre">
+                    <h3>Sobre</h3>
+                </a>
+                <a href="#produtos">
+                    <h3>Produtos</h3>
+                </a>
+                <a href="#links-uteis">
+                    <h3>Links Uteis</h3>
+                </a>
+            </article>
+        </nav>
+    </header>
+    <main>
+        <section id="propaganda">
+            <article>
+                <h1>O Melhor da Trufa em Cada Pedacinho</h1>
+                <img src="imgs/propaganda1.png" alt="">
+                <img src="imgs/propaganda2.png" alt="">
+                <img src="imgs/propaganda3.png" alt="">
+                <img src="imgs/propaganda4.png" alt="">
+                <img src="imgs/propaganda1.png" alt="">
+            </article>
+        </section>
+        <section id="produtos">
+            
+            <div id="options">
+                <h3 class="escolhido" onclick="showHide(trufas, this)">Trufas</h3>
+                <h3 onclick="showHide(barras, this)">Barras</h3>
+                <h3 onclick="showHide(variados, this)">Variados</h3>
+            </div>
+
+            <div class="lista-produtos" id="trufas">
+                <article class="produto">
+                    <h3>Limão</h3>
+
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLPEshC5Q_EWwywAYu_8_WXALLultRsNdK6g&s"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Brigadeiro</h3>
+
+                    <img src="https://images.tcdn.com.br/img/img_prod/746520/embalagem_para_trufas_e_bombons_sabor_brigadeiro_100u_regina_5808737_1_f12322b126b17e3c733759a21c16dc4c.png"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Morango</h3>
+
+                    <img src="https://www.prawer.com.br/media/catalog/product/cache/10b232d5b784a982ef7984da64b814e7/b/i/big-trufa-ao--leite.png"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Coco</h3>
+
+                    <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw53d2fd2b/large/1002634_2.png"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Leite Condensado</h3>
+
+                    <img src="https://down-br.img.susercontent.com/file/cf10cd1e2ed272f9d1ccb761010b1493"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Limão</h3>
+
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLPEshC5Q_EWwywAYu_8_WXALLultRsNdK6g&s"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Limão</h3>
+
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLPEshC5Q_EWwywAYu_8_WXALLultRsNdK6g&s"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+            </div>
+            <div class="lista-produtos" id="barras">
+
+                <article class="produto">
+                    <h3>Limão</h3>
+
+                    <img src="https://avenidab2c.vtexassets.com/unsafe/fit-in/720x720/center/middle/https%3A%2F%2Favenidab2c.vtexassets.com%2Farquivos%2Fids%2F331818%2FBarra-de-Chocolate-ao-Leite-Lacta-Pacote165g.jpg%3Fv%3D638592189793900000"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Brigadeiro</h3>
+
+                    <img src="https://avenidab2c.vtexassets.com/unsafe/fit-in/720x720/center/middle/https%3A%2F%2Favenidab2c.vtexassets.com%2Farquivos%2Fids%2F331818%2FBarra-de-Chocolate-ao-Leite-Lacta-Pacote165g.jpg%3Fv%3D638592189793900000"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Morango</h3>
+
+                    <img src="https://avenidab2c.vtexassets.com/unsafe/fit-in/720x720/center/middle/https%3A%2F%2Favenidab2c.vtexassets.com%2Farquivos%2Fids%2F331818%2FBarra-de-Chocolate-ao-Leite-Lacta-Pacote165g.jpg%3Fv%3D638592189793900000"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Coco</h3>
+
+                    <img src="https://avenidab2c.vtexassets.com/unsafe/fit-in/720x720/center/middle/https%3A%2F%2Favenidab2c.vtexassets.com%2Farquivos%2Fids%2F331818%2FBarra-de-Chocolate-ao-Leite-Lacta-Pacote165g.jpg%3Fv%3D638592189793900000"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Leite Condensado</h3>
+
+                    <img src="https://avenidab2c.vtexassets.com/unsafe/fit-in/720x720/center/middle/https%3A%2F%2Favenidab2c.vtexassets.com%2Farquivos%2Fids%2F331818%2FBarra-de-Chocolate-ao-Leite-Lacta-Pacote165g.jpg%3Fv%3D638592189793900000"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Limão</h3>
+
+                    <img src="https://avenidab2c.vtexassets.com/unsafe/fit-in/720x720/center/middle/https%3A%2F%2Favenidab2c.vtexassets.com%2Farquivos%2Fids%2F331818%2FBarra-de-Chocolate-ao-Leite-Lacta-Pacote165g.jpg%3Fv%3D638592189793900000"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Limão</h3>
+
+                    <img src="https://avenidab2c.vtexassets.com/unsafe/fit-in/720x720/center/middle/https%3A%2F%2Favenidab2c.vtexassets.com%2Farquivos%2Fids%2F331818%2FBarra-de-Chocolate-ao-Leite-Lacta-Pacote165g.jpg%3Fv%3D638592189793900000"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+            </div>
+            <div class="lista-produtos" id="variados">
+
+                <article class="produto">
+                    <h3>Limão</h3>
+
+                    <img src="https://images.festejante.com.br/uploads/shop/84ed7c0a-1329-42b8-800c-be3a46256b0c/products/2708/fc0cbbf2-6c70-4435-898b-580bb6ea6510.jpeg__cropped.jpeg"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Brigadeiro</h3>
+
+                    <img src="https://images.festejante.com.br/uploads/shop/84ed7c0a-1329-42b8-800c-be3a46256b0c/products/2708/fc0cbbf2-6c70-4435-898b-580bb6ea6510.jpeg__cropped.jpeg"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Morango</h3>
+
+                    <img src="https://images.festejante.com.br/uploads/shop/84ed7c0a-1329-42b8-800c-be3a46256b0c/products/2708/fc0cbbf2-6c70-4435-898b-580bb6ea6510.jpeg__cropped.jpeg"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Coco</h3>
+
+                    <img src="https://images.festejante.com.br/uploads/shop/84ed7c0a-1329-42b8-800c-be3a46256b0c/products/2708/fc0cbbf2-6c70-4435-898b-580bb6ea6510.jpeg__cropped.jpeg"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Leite Condensado</h3>
+
+                    <img src="https://images.festejante.com.br/uploads/shop/84ed7c0a-1329-42b8-800c-be3a46256b0c/products/2708/fc0cbbf2-6c70-4435-898b-580bb6ea6510.jpeg__cropped.jpeg"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Limão</h3>
+
+                    <img src="https://images.festejante.com.br/uploads/shop/84ed7c0a-1329-42b8-800c-be3a46256b0c/products/2708/fc0cbbf2-6c70-4435-898b-580bb6ea6510.jpeg__cropped.jpeg"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+                <article class="produto">
+                    <h3>Limão</h3>
+
+                    <img src="https://images.festejante.com.br/uploads/shop/84ed7c0a-1329-42b8-800c-be3a46256b0c/products/2708/fc0cbbf2-6c70-4435-898b-580bb6ea6510.jpeg__cropped.jpeg"
+                        alt="imagem-produto">
+                    <button class="botao-pedir" type="submit">Eu quero!</button>
+                </article>
+            </div>
+        </section>
+    </main>
+    <div id="innerHTML-location">
+        
+    </div>
+    <div id="side-bar">
+        <a href="#topo"><i class="fa-solid fa-arrow-up"></i></a>
+        <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+    </div>
+    <footer>
+        <nav id="links-uteis">
+            <h2>Links Uteis</h2>
+            <a href="index.html">
+                <h3>Pagina Inicial</h3>
+            </a>
+            <a href="feedback.html">
+                <h3>Feedback</h3>
+            </a>
+            <h2>Redes Sociais</h2>
+            <a href="https://www.instagram.com" target="_blank">
+                <h3>Instagram</h3>
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+                <h3>Facebook</h3>
+            </a>
+        </nav>
+        <nav>
+            <h2>Mais Informações</h2>
+            <h3>Contato +55 51 98586-6147</h3>
+        </nav>
+        <nav>
+            <h3>&copy; 2024 Nome da Sua Empresa. Todos os Direitos Reservados.</h3>
+            <h3>Desenvolvedor - <a
+                    href="https://www.linkedin.com/in/ricardo-müller-severo-10b95526a/?originalSubdomain=br">Ricardo
+                    Müller Severo</a></h3>
+        </nav>
+    </footer>
+</body>
+<script src="script.js"></script>
+<script src="https://kit.fontawesome.com/0e891662a9.js" crossorigin="anonymous"></script>
+
+</html>
