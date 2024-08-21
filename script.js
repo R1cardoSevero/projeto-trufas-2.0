@@ -57,10 +57,10 @@ document.addEventListener('DOMContentLoaded', function () {
             </article>
         </div>`;
 
-            // menu = document.getElementById('menu-pedido-container');       
-            // menu.addEventListener('click', function(){
-            //     closeOpenPedido()
-            // });
+             menu = document.getElementById('menu-pedido-container');       
+             menu.addEventListener('click', function(){
+                 closeOpenPedido()
+             });
 
 
         });
