@@ -17,7 +17,7 @@ function showHide(lista, optionClicked) {
         lista.style.display = "none";
     });
 
-    lista.style.display = "flex";
+    lista.style.display = "grid";
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             //Adicionando o menu com estilização ja feita
             main.innerHTML = `
-        <div id="menu-pedido-container" style="background-color:${dominantColor};">
-            <article>
-                <img src="${img.src}" alt="imagem-produto">
+        <div id="menu-pedido-container">
+            <article >
+                <img src="${img.src}" alt="imagem-produto" style="filter: drop-shadow(-10px -10px 50px ${dominantColor} ) drop-shadow(10px 10px 150px ${dominantColor}); ">
             </article>
             <article id="menu-pedido">
                 <h3>${name}</h3>
