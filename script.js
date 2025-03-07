@@ -1,5 +1,4 @@
 
-
 function showHide(lista, optionClicked) {
     //Pegando todos os elementos com essa classe "lista-produtos"
     var listas = document.querySelectorAll(".lista-produtos");
@@ -17,12 +16,13 @@ function showHide(lista, optionClicked) {
     listas.forEach(function (lista) {
         lista.style.display = "none";
     });
+
     lista.style.display = "flex";
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.botao-pedir').forEach(function (button) {
-        button.addEventListener('click', function () {
+        button.addEventListener('click', async function () {
             var main = document.getElementById('innerHTML-location');
 
             //Selecionando o Pai do elemento
@@ -32,12 +32,24 @@ document.addEventListener('DOMContentLoaded', function () {
             var name = removerAcentos(card.querySelector('h3').textContent);
 
             //Pega a Source(src) da imagem, ou seja o link dela, para usar no innerHTML
-            var img = card.querySelector('img').src;
+            var img = card.querySelector('img'); 
+            const colorThief = new ColorThief();
+
+            var dominantColor;
+            if (img.complete) {
+                dominantColor = colorThief.getColor(img);
+                dominantColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`
+            } else {
+                img.addEventListener('load', () => {
+                    dominantColor = colorThief.getColor(img);
+                    dominantColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`
+                });
+            }
             //Adicionando o menu com estilização ja feita
             main.innerHTML = `
-        <div id="menu-pedido-container">
+        <div id="menu-pedido-container" style="background-color:${dominantColor};">
             <article>
-                <img src="${img}" alt="imagem-produto">
+                <img src="${img.src}" alt="imagem-produto">
             </article>
             <article id="menu-pedido">
                 <h3>${name}</h3>

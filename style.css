@@ -241,7 +241,7 @@ main #propaganda{
         img{
             width: 100%;
             max-width: 500px;
-            filter: drop-shadow(-10px -10px 50px white ) drop-shadow(10px 10px 30px rgb(224, 101, 8));
+            filter: drop-shadow(-10px -10px 50px white ) drop-shadow(10px 10px 150px rgb(255, 255, 255));
         }
         
         h3{
