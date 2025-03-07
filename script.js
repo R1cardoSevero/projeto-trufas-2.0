@@ -69,10 +69,16 @@ document.addEventListener('DOMContentLoaded', function () {
             </article>
         </div>`;
 
-             menu = document.getElementById('menu-pedido-container');       
-             menu.addEventListener('click', function(){
-                 closeOpenPedido()
-             });
+        var menu = document.getElementById('menu-pedido-container');       
+        menu.addEventListener('click', function() {
+            closeOpenPedido();
+        });
+
+        // Impede a propagação do clique no formulário
+        var form = menu.querySelector('form');
+        form.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
 
 
         });

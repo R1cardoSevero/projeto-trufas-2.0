@@ -11,6 +11,11 @@
     src: url(fonts/akira.otf);
 }
 
+@font-face {
+    font-family: font3;
+    src: url(fonts/Lobster\ 1.4.otf);
+}
+
 html{
     scroll-behavior: smooth;
 }
@@ -165,8 +170,9 @@ main #propaganda{
         font-size:15px;
         background-color: #623707;
         color: whitesmoke;
+        font-family: font3;
         text-align: center;
-        padding: 5px;
+        padding: 10px 0px;
     }
 
     img{
