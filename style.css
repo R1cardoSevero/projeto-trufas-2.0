@@ -87,7 +87,6 @@ header input{
 main #propaganda{
     height: fit-content;
     overflow: hidden;
-    padding-bottom: 20px;
 }
 
 #propaganda article{
@@ -109,7 +108,7 @@ main #propaganda{
     z-index: 1;
     font-family: font2;
     padding: 1rem;
-    font-size: clamp(1rem, 10vw, 9rem);
+    font-size: clamp(1rem, 8vw, 8rem);
     backdrop-filter: blur(10px);
     left: 0;
     top:0;
@@ -148,32 +147,38 @@ main #propaganda{
     background-color: rgb(72, 38, 11);
 }
 
-
+#produtos .lista-produtos{
+    padding: 10px;
+}
 #produtos .lista-produtos .produto{
     /* background-color: red; */
     display: flex;
     flex-direction: column;
-    padding: 5px;
-
+    border: 1px solid rgba(47, 47, 47, 0.416);
+    background-color: #62370734;
+    margin: 0px auto;
+    border-radius: 10px;
+    max-width: 75vw;
+    height: fit-content;
     h3{
         border-radius: 5px 5px 0px 0px;
         font-family: monospace;
         font-weight: 900;
-        font-size:15px;
-        background-color: #623707;
-        color: whitesmoke;
+        font-size:2rem;
+        color: rgb(78, 78, 78);
+        letter-spacing: 2px;
         font-family: font3;
-        text-align: center;
-        padding: 10px 0px;
+        padding: 10px 30px;
     }
 
     img{
         aspect-ratio: 1/1;
+        filter: drop-shadow(20px 20px 10px rgba(84, 84, 84, 0.125)) drop-shadow( -20px -20px 10px rgba(93, 93, 93, 0.158));
     }
 
     button{
         padding: 10px;
-        margin-top: 10px;
+
         background-color: #78440a;
         color: whitesmoke;
         border: none;
@@ -238,7 +243,8 @@ main #propaganda{
 
         img{
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
+            rotate: -25deg;
         }
         
         h3{
