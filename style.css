@@ -33,7 +33,6 @@ html{
     cursor: url('./imgs/cursor-choco.png'), auto;
 }
 
-
 body{
     background-color: var(--cor-principal);
     overflow-x: hidden;
@@ -41,7 +40,6 @@ body{
 /* CONFIGURACOES-INICIAIS/FIM */
 
 /* HEADER/INICIO */
-
 header{
     background: linear-gradient(63deg, #78440a 0%, rgba(80,51,14,1) 49%, rgba(80,53,23,1) 100%);
     width: 100vw;
