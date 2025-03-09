@@ -2,11 +2,6 @@
 @charset "utf-8";
 
 @font-face {
-    font-family: font1;
-    src: url(fonts/panpizza.ttf);
-}
-
-@font-face {
     font-family: font2;
     src: url(fonts/akira.otf);
 }
@@ -16,52 +11,75 @@
     src: url(fonts/Lobster\ 1.4.otf);
 }
 
+@font-face {
+    font-family: propagandaFont;
+    src: url(fonts/KingsguardCalligraphy_PERSONAL_USE_ONLY.otf);
+}
+
 html{
     scroll-behavior: smooth;
 }
 
 :root{
     --cor-header-footer: #623707;
-    --cor-principal: #ffffff;
-    --cor-letra-header-footer:#d0d0d0;
+    --cor-letra-header-footer:#c1c1c1;
+    --cor-fundo-home:rgb(255, 247, 228);
 }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: url('./imgs/cursor-choco.png'), auto;
 }
 
 body{
-    background-color: var(--cor-principal);
+    background-color: var(--cor-fundo-home);
     overflow-x: hidden;
+    cursor: url('./imgs/cursor-choco.png'), auto;
 }
 /* CONFIGURACOES-INICIAIS/FIM */
 
 /* HEADER/INICIO */
 header{
-    background: linear-gradient(63deg, #78440a 0%, rgba(80,51,14,1) 49%, rgba(80,53,23,1) 100%);
+    background: var(--cor-header-footer);
+    display: flex;
+    justify-content: center;
     width: 100vw;
     padding: 20px;
-    position: relative;
+    position: fixed;
     z-index: 1;
-    box-shadow: 0px -8px 20px white;
-}
-
-header h2{
-    font-family: font1;
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    font-weight: 400;
-    text-wrap: nowrap;
-    letter-spacing: 2px;
-    color: beige;
+    height:10vh;
 }
 
 header a{
     text-decoration: none;
-    color: whitesmoke;
+    color: rgb(198, 198, 198);
+    position: relative;
+    transition: .5s;
 }
+
+header a::before{
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: rgb(198, 198, 198);
+    bottom: -5px;
+    left: 0;
+    z-index: -1;
+    transition: .5s;
+}
+
+header a:hover::before{
+    transition: .5s;
+    width: 100%;
+}
+
+nav:has(a:hover) a:not(:hover) {
+    opacity: 50%;
+    transition: .5s;
+}
+
 
 header nav, header nav article{
     display: flex;
@@ -85,35 +103,54 @@ header input{
 
 /* PROPAGANDA/INICIO */
 main #propaganda{
-    height: fit-content;
-    overflow: hidden;
-}
-
-#propaganda article{
+    border: 5px solid var(--cor-header-footer); /* Define a espessura da borda */
+    height: 100svh;
     display: flex;
-    position: relative;
-    overflow: hidden;
-    z-index: -1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-fundo-home);
+    color: rgb(60, 60, 60);
+
+     h1{
+        font-family: propagandaFont;
+        font-size: clamp(1rem, 8vw, 6rem);
+        text-align: center;
+        padding: 10px;
+    }
+
+     p{
+        font-family:monospace;
+        text-align: center;
+        position: relative;
+        background-color: var(--cor-fundo-home);
+        width: fit-content;
+        padding: 10px;
+    }
+
+     p::before{
+        content: '';
+        position: absolute;
+        width: 10vw;
+        height: 1px;
+        background-color: black;
+        top: 50%;
+        left: 100%;
+    }
+
+    p::after{
+        content: '';
+        position: absolute;
+        width: 10vw;
+        height: 1px;
+        background-color: black;
+        top: 50%;
+        right: 100%;
+    }
 }
 
-#propaganda article img{
-    animation: carrosel-animation 10s infinite;
-    min-width: 100vw;
-}
 
-#propaganda article h1{
-    position: absolute;
-    height: 100%;
-    text-shadow: -5px -5px 0px rgba(105, 69, 14, 0.416), -10px -10px 0px rgba(116, 81, 7, 0.498);
-    z-index: 1;
-    font-family: font2;
-    padding: 1rem;
-    font-size: clamp(1rem, 8vw, 8rem);
-    backdrop-filter: blur(10px);
-    left: 0;
-    top:0;
-    color: beige;
-}
+
 /* PROPAGANDA/FIM */
 
 
@@ -127,9 +164,9 @@ main #propaganda{
     width: 100vw;
 
     h3{
-        background-color: #78440a;
+        background-color: rgb(109, 60, 20);
         color: white;
-        margin: 1px;
+        border: 1px solid rgb(240, 240, 240);
         flex-grow: 1;
         flex-basis: 150px;
         text-align: center;
@@ -137,7 +174,7 @@ main #propaganda{
         transition: background-color 1s;
 
         &:hover{
-            background-color: #995609;
+            background-color: #78440a;
             transition: all 1s;
         }
     }
@@ -251,6 +288,7 @@ main #propaganda{
             font-size: 2rem;
             color: white;
             font-family: font2;
+            text-align: center;
             background-color: #623707;
             padding: 10px;
             margin: 10px;
@@ -349,28 +387,41 @@ footer{
 @media (max-width: 700px){
 
     #hamburguer{
-        height:25px;
-        width:25px;
+        height:33px;
+        width:35px;
         position:absolute;
-        right:35px;
+        right:33px;
+        top: 33px;
         display:flex;
         flex-direction: column;
+        align-items: space-between;
+        justify-content: space-around;
+        
     }
 
     #hamburguer span{
         content: ' ';
-        transition: 1s;
+        transition: .5s;
         margin: 1px;
-        background-color: var(--cor-letra-header-footer);
+        background-color: rgb(84, 84, 84);
         width: 35px;
         height: 7px;
-        border-radius: 10px;
+        border-radius: 3px;
+        box-shadow: 1px -1px 0px #f1f1f1;
+        
+    }
+
+    header{
+        background-color: transparent;
     }
 
     header input{
         display: block;
         position: absolute;
         z-index: 1;
+        width: 33px;
+        height: 33px;
+        top: 33px;
         right: 33px;
         opacity: 0%;
     }
@@ -378,14 +429,13 @@ footer{
 
     header nav article{
         position: absolute;
-        bottom: 0;
+        top: -100vh;
         color: rgb(219, 219, 219);
-        left: -100%;
-        transform: translateY(100%);
-        background: rgba(120,68,10,1);
+        left: 0;
+        background-color:#78440a ;
         width: 50vw;
         flex-direction: column;
-        transition: left 1s;
+        transition: top .5s;
         z-index: 10;
     }
 
@@ -393,7 +443,6 @@ footer{
         color: whitesmoke;
         padding: 15px 0px;
         border: none;
-        border-bottom: 1px solid rgb(232, 232, 232);
         padding-left: 10px;
         width: 100%;
         transition: 0.3s ease-in-out;
@@ -412,14 +461,14 @@ footer{
     }
 
     header input:checked ~ article{
-        left: 0%;
-        transition: 1s;
+        top: 0%;
+        transition: .5s;
     }
 
     header input:checked ~ #hamburguer span:nth-child(1){
         rotate: 45deg;
-        transition: 1s;
-        transform: translateY(11px);
+        transition: .5s;
+        transform: translate(7px, 8px);
     }
 
     header input:checked ~ #hamburguer span:nth-child(2){
@@ -429,8 +478,9 @@ footer{
 
     header input:checked ~ #hamburguer span:nth-child(3){
         rotate: -45deg;
-        transition: 1s;
-        transform: translateY(-10px);
+        transition: .5s;
+        transform: translate(8px, -8px);
     }
+
 }
 
