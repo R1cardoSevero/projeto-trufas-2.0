@@ -13,7 +13,7 @@
 
 @font-face {
     font-family: propagandaFont;
-    src: url(fonts/Kingsguard.otf);
+    src: url(fonts/kingsguard.otf);
 }
 
 html{
@@ -53,7 +53,7 @@ header{
 
 header a{
     text-decoration: none;
-    color: rgb(198, 198, 198);
+    color: rgb(227, 227, 227);
     position: relative;
     transition: .5s;
 }
@@ -200,12 +200,13 @@ main #propaganda{
     h3{
         border-radius: 5px 5px 0px 0px;
         font-family: monospace;
-        font-weight: 900;
-        font-size:2rem;
+        font-size:clamp(0rem, 3vw, 1.5rem);
+        
         color: rgb(78, 78, 78);
         letter-spacing: 2px;
-        font-family: font3;
-        padding: 10px 30px;
+        font-family: font2;
+        padding: 13px;
+        
     }
 
     img{
@@ -293,13 +294,13 @@ main #propaganda{
             padding: 10px;
             margin: 10px;
         }
-        form{
+        div{
             display: flex;
             flex-direction: column;
             max-width: 500px;
         }
 
-        form :where(select, button){
+        div :where(select, button, input){
             padding: 10px;
             margin-bottom: 5px;
             background-color: #f1f1f1;
@@ -349,6 +350,110 @@ main #propaganda{
     }
 }
 /* SIDE-BAR/FIM */
+
+/* INICIO/CARRINHO */
+
+#carrinho{
+    height: 100vh;
+    width: 100svw;
+    overflow: scroll;
+    position: fixed;
+    padding-top: 8vh;
+    top: 0;
+    left: 0;
+    background-color: var(--cor-fundo-home);
+}
+
+#carrinho  h1{
+    width: 100svw;
+    padding: 20px;
+    font-family: propagandaFont;
+    font-size: 5rem;
+    text-align: center;
+}
+
+#carrinho  ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#carrinho .itemCarrinho{
+    display: flex;
+    border: 1px solid rgb(109, 60, 20);
+    border-radius: 10px;
+    min-width: 50vw;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(109, 60, 20, 0.235);
+    position: relative;
+
+    article{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    article:nth-child(1){
+        border:1px solid rgb(109, 60, 20);
+        border-radius: 10px;
+        justify-content: space-evenly;
+        flex: 1;
+    }
+
+    div{
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    h2{
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    h3{
+        text-align: center;
+        font-size: .8rem;
+        color: rgba(93, 93, 93, 0.884);
+    }
+
+    i{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        scale: 1.5;
+        width: 20px;
+        height: 20px;
+        bottom: 0;
+        color: rgb(212, 212, 212);
+        background-color: rgb(159, 0, 0);
+        border-radius: 50px;
+        cursor: pointer;
+    }
+}
+
+#valorTotalCarrinho{
+    text-align: center;
+}
+
+.carrinhoClose{
+    display: none;
+}
+
+.carrinhoOpen {
+    transition: .5s;
+    display: block;
+}
+
+
+/* FIM/CARRINHO */
 
 /* FOOTER/INICIO */
 footer{
@@ -481,6 +586,8 @@ footer{
         transition: .5s;
         transform: translate(8px, -8px);
     }
+
+    
 
 }
 

@@ -13,24 +13,24 @@
 <body id="topo">
     <header>
         <nav>
-            <input type="checkbox">
+            <input type="checkbox" id="checkBox">
             <div id="hamburguer">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             <article>
-                <a href="#sobre">
+                <a href="#sobre" onclick="uncheckBox()">
                     <h3>Sobre</h3>
                 </a>
-                <a href="#produtos">
+                <a href="#produtos"onclick="uncheckBox()">
                     <h3>Produtos</h3>
                 </a>
-                <a href="#links-uteis">
+                <a href="#links-uteis" onclick="uncheckBox()">
                     <h3>Links Uteis</h3>
                 </a>
                 <a>
-                    <h3>Carrinho</h3>
+                    <h3 onclick="closeOpenCarrinho(), uncheckBox()">Carrinho</h3>
                 </a>
             </article>
         </nav>
@@ -48,9 +48,9 @@
                 <h3 onclick="showHide(variados, this)">Variados</h3>
             </div>
 
-            <div class="lista-produtos grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  gap-4" id="trufas">
+            <div class="lista-produtos grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2  gap-4" id="trufas">
                 <article class="produto">
-                    <h3>Limão</h3>
+                    <h3>Limao</h3>
 
                     <img src="imgs/big-trufa---avel_.png"
                         alt="imagem-produto">
@@ -103,7 +103,7 @@
             <div class="lista-produtos grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4" id="barras">
 
                 <article class="produto">
-                    <h3>Limão</h3>
+                    <h3>Limao</h3>
                     <img src="https://apoioentrega.vteximg.com.br/arquivos/ids/640703/225815.png?v=638520435058070000" alt="imagem-produto">
                     <button class="botao-pedir" type="submit">Eu quero!</button>
                 </article>
@@ -142,7 +142,7 @@
             <div class="lista-produtos grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4"  id="variados">
 
                 <article class="produto">
-                    <h3>Limão</h3>
+                    <h3>Limao</h3>
 
                     <img src="https://i.pinimg.com/736x/6a/a5/a7/6aa5a7935b421b8289c304fe8b2e3899.jpg"
                         alt="imagem-produto">
@@ -198,7 +198,14 @@
     </div>
     <div id="side-bar">
         <a href="#topo"><i class="fa-solid fa-arrow-up"></i></a>
-        <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+        <a onclick="closeOpenCarrinho()"><i class="fa-solid fa-bag-shopping"></i></a>
+    </div>
+    <div id="carrinho" class="carrinhoClose"">
+        <h1>Carrinho</h1>
+        <ul class="listaCarrinho">
+            
+        </ul>
+        <h2 id="valorTotalCarrinho"></h2>
     </div>
     <footer>
         <nav id="links-uteis">
