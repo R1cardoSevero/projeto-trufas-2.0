@@ -113,6 +113,7 @@ function pegarPedido(botao) {
 }
 
 function adicionarAoCarrinho(sabor, tamanho, casca, quantidade, peso, img) {
+    const PRECO = 4.00;
     const carrinho = document.getElementById('carrinho')
     var lista = carrinho.querySelector('ul');
     lista.innerHTML += `
@@ -121,13 +122,13 @@ function adicionarAoCarrinho(sabor, tamanho, casca, quantidade, peso, img) {
                     <img src="${img}" style="height:90px;" alt="imagem-produto">
                     <div>   
                         <h2>Trufa de ${sabor}</h2>
-                        <h3>${tamanho} - ${peso}</h3>
+                        <h3>${tamanho} - ${peso}g</h3>
                     </div>
                 </article>
                 <article>
                     <div>
                         <h2>Unidade</h2>
-                        <h3>R$ 2.50</h3>
+                        <h3>R$ 4.00</h3>
                     </div>
                     <div>
                         <h2>Quantidade</h2>
@@ -135,7 +136,7 @@ function adicionarAoCarrinho(sabor, tamanho, casca, quantidade, peso, img) {
                     </div>
                     <div>
                         <h2>Total</h2>
-                        <h3>R$ 10.00</h3>
+                        <h3>R$ ${quantidade * PRECO}</h3>
                     </div>
                 </article>
                 <i class="fa-solid fa-xmark" onclick="removeItem(this)"></i>
