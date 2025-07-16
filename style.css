@@ -35,7 +35,7 @@ html{
 body{
     background-color: var(--cor-fundo-home);
     overflow-x: hidden;
-    cursor: url('./imgs/cursor-choco.png'), auto;
+    cursor: url('./imgs/cursor_diferente.png'), auto;
 }
 /* CONFIGURACOES-INICIAIS/FIM */
 
@@ -508,12 +508,22 @@ footer{
         content: ' ';
         transition: .5s;
         margin: 1px;
-        background-color: rgb(84, 84, 84);
         width: 35px;
         height: 7px;
         border-radius: 3px;
-        box-shadow: 1px -1px 0px #f1f1f1;
-        
+        box-shadow: 1px -1px 0px #f1f1f100;
+    }
+
+    #hamburguer span:nth-child(1) {
+        background-color: rgb(104, 40, 0);
+    }
+    
+    #hamburguer span:nth-child(2) {
+        background-color: rgb(128, 49, 0);
+    }
+    
+    #hamburguer span:nth-child(3) {
+        background-color: rgb(146, 56, 0);
     }
 
     header{
