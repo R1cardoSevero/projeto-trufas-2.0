@@ -173,3 +173,69 @@ function removeItem(itemClicked){
     var lista = carrinho.querySelector('ul');
     localStorage.setItem('carrinhoConteudo', lista.innerHTML);
 }
+
+// 1. Conexão com o Supabase
+const supabaseUrl = 'https://garblafvvlfvjqsuezpo.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhcmJsYWZ2dmxmdmpxc3VlenBvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk5Mzg4MjQsImV4cCI6MjA2NTUxNDgyNH0.9nxpocghJx1g3vtaSO7oiy4cMJ7zdA_psrFrjG_bkVM';
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+// 2. Função para carregar as trufas da tabela
+async function carregarTrufas() {
+  // Busca todas as trufas da tabela 'trufas'
+  const { data, error } = await supabaseClient.from('trufas').select('*') // Exibe todas trufas desativadas/ativadas
+
+  if (error) {
+    console.error('Erro ao buscar trufas:', error);
+    return;
+  }
+
+  const container = document.getElementById('catalogo');
+  container.innerHTML = ''; // limpa conteúdo anterior
+
+  // 3. Para cada trufa recebida do banco...
+  for (const trufa of data) {
+
+    // Busca a URL pública da imagem no bucket
+
+    const principalPath = `${trufa.id}/principal.png`;
+    const backgroundPath = `${trufa.id}/background.png`;
+
+    const { data: principalData } = supabaseClient.storage.from('imagenstrufas').getPublicUrl(principalPath);
+    const { data: backgroundData } = supabaseClient.storage.from('imagenstrufas').getPublicUrl(backgroundPath);
+
+    const principal = principalData?.publicUrl;
+    const background = backgroundData?.publicUrl;
+
+    const alcoolica = trufa.alcoolico ? 'block' : 'none';
+    const vegana = trufa.vegana ? 'block' : 'none';
+    const sabor = trufa.sabor;
+    const ativada = trufa.ativo ? 'block' : 'none';
+
+    const article = document.createElement('article');
+    article.className = 'product';
+    article.style.backgroundImage = `url('${background}')`;
+    article.style.backgroundSize = 'cover';
+    article.style.backgroundPosition = 'center';
+    article.style.display = ativada;
+
+    // Adiciona o conteúdo interno do article
+    article.innerHTML = `
+    <div id="alertas">
+        <div class="alcoolico-ativado" style="display: ${alcoolica};">
+        <img src="icons/bebida-vetor.svg" alt="Trufa Alcoolica">
+        </div>
+        <div class="vegana-ativado" style="display: ${vegana};">
+        <img src="icons/vegana-icon.png" alt="Trufa Vegana">
+        </div>
+    </div>
+    <h3>${sabor}</h3>
+    <img class="foto-trufa" src="${principal}" alt="">
+    <button class="botao-pedir" type="submit">Adicionar ao Carrinho</button>
+    `;
+
+    // Adiciona ao container
+    container.appendChild(article);
+  };
+};
+// 4. Carrega as trufas ao carregar a página
+carregarTrufas();

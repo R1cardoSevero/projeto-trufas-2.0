@@ -3,7 +3,7 @@
 
 @font-face {
     font-family: font2;
-    src: url(fonts/akira.otf);
+    src: url(fonts/Edges.ttf);
 }
 
 @font-face {
@@ -23,7 +23,7 @@ html{
 :root{
     --cor-header-footer: #623707;
     --cor-letra-header-footer:#c1c1c1;
-    --cor-fundo-home:rgb(255, 247, 228);
+    --cor-fundo-home:#fff7e3;
 }
 
 *{
@@ -47,7 +47,7 @@ header{
     width: 100vw;
     padding: 20px;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     height:10vh;
 }
 
@@ -323,6 +323,7 @@ main #propaganda{
     animation: side-bar-show ease-in-out;
     animation-timeline: view();
     animation-range: cover 50vh cover 95vh;
+    z-index: 10;
 
     i{
         background-color: #995609;
@@ -489,6 +490,111 @@ footer{
 }
 /* FOOTER/FIM */
 
+#catalogo{
+    display: flex;
+    flex-wrap: wrap;
+    article{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 45px;
+        border: 3px solid black;
+        background-color: #f1f1f1;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.223);
+        position: relative;
+        scale: 1;
+    }
+    article h3{
+        font-family: font2;
+        text-wrap: wrap;
+        width: 100%;
+        height: 25px;
+        font-size: clamp(1rem, 3vw, 2.1rem);
+        padding: 20px 20px 60px 20px;
+        color: whitesmoke;
+    }
+    article *{
+        z-index: 2;
+    }
+    article:after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0);
+        backdrop-filter: blur(5px);
+        border-radius: 41px;
+        z-index: -1;
+        left: 0;
+        top: 0;
+    }
+
+    article img{
+        scale: 1;
+        transition: .5s;
+    }
+
+    article:hover .foto-trufa{
+        width:100%;
+        scale: 1.5;
+        transition: .5s;
+    }
+
+    article button{
+        width: 100%;
+        padding: 15px;
+        border-radius: 50px;
+        margin: 5px;
+        background-color: whitesmoke;
+    }
+
+    #alertas{
+        position: absolute;
+        top: -20px;
+        left: -15px;
+        display: flex;
+    }
+
+    #alertas > div{
+        margin-right: 6px;
+    }
+
+    .alcoolico-ativado{
+        border-radius: 50px;
+        background-color: whitesmoke;
+        border: 2px solid rgb(170, 0, 0);
+        img{
+            width: 50px;
+            height: 50px;
+            scale: .7;
+        }
+    }
+    .vegana-ativado{
+        border-radius: 50px;
+        background-color: whitesmoke;
+        border: 2px solid rgb(170, 0, 0);
+        img{
+            width: 50px;
+            height: 50px;
+            scale: .5;
+        }
+    }
+}
+
+@media (max-width: 1150px){
+    #catalogo{
+        article{
+            max-width: 30svw;
+        }
+    }
+}
+
 @media (max-width: 700px){
 
     #hamburguer{
@@ -546,12 +652,13 @@ footer{
         position: absolute;
         top: -100vh;
         color: rgb(219, 219, 219);
-        left: 0;
+        left: 10px;
         background-color:#78440a ;
         width: 50vw;
         flex-direction: column;
         transition: top .5s;
         z-index: 10;
+        border-radius: 10px;
     }
 
     header nav article a{
@@ -561,7 +668,6 @@ footer{
         padding-left: 10px;
         width: 100%;
         transition: 0.3s ease-in-out;
-
     }
 
     header nav article:hover a:not(:hover){
@@ -576,7 +682,7 @@ footer{
     }
 
     header input:checked ~ article{
-        top: 0%;
+        top: 10px;
         transition: .5s;
     }
 
@@ -597,6 +703,18 @@ footer{
         transform: translate(8px, -8px);
     }
 
+    #catalogo{
+        justify-content: space-evenly;
+        article{
+            max-width: 60svw;
+        }
+        article img{
+            width:100%;
+            scale: 1.5;
+            transition: .5s;
+        }
+        
+    }
     
 
 }
