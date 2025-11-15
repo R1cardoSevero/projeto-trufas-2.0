@@ -21,75 +21,6 @@ function showHide(lista, optionClicked) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.botao-pedir').forEach(function (button) {
-        button.addEventListener('click', async function () {
-            var main = document.getElementById('innerHTML-location');
-
-            //Selecionando o Pai do elemento
-            var card = button.closest('article');
-
-            //Seleciona o Sabor da Trufa pegando o conteudo do h3
-            var name = removerAcentos(card.querySelector('h3').textContent);
-
-            //Pega a Source(src) da imagem, ou seja o link dela, para usar no innerHTML
-            var img = card.querySelector('img'); 
-            const colorThief = new ColorThief();
-
-            var dominantColor;
-            if (img.complete) {
-                dominantColor = colorThief.getColor(img);
-                dominantColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`
-            } else {
-                img.addEventListener('load', () => {
-                    dominantColor = colorThief.getColor(img);
-                    dominantColor = `rgb(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]})`
-                });
-            }
-            //Adicionando o menu com estilização ja feita
-            main.innerHTML = `
-        <div id="menu-pedido-container">
-            <article >
-                <img src="${img.src}" alt="imagem-produto" style="filter: drop-shadow(-10px -10px 50px ${dominantColor} ) drop-shadow(10px 10px 150px ${dominantColor}); ">
-            </article>
-            <article id="menu-pedido">
-                <h3>${name}</h3>
-                <div>
-                    <select name="tamanho" id="tamanho">
-                        <option value="Trufa Mini" data-peso="45">Trufa Mini</option>
-                        <option value="Trufa" data-peso="70">Trufa</option>
-                    </select>
-                    <select name="casca" id="casca">
-                        <option value="Chocolate Meio Amargo">Chocolate Meio Amargo</option>
-                        <option value="Chocolate Branco">Chocolate Branco</option>
-                        <option value="Chocolate ao Leite">Chocolate ao Leite</option>
-                        <option value="Chocolate Misto">Chocolate Misto ( Ao Leite + Meio Amargo )</option>
-                    </select>
-                    <input type="number" name="quantidade" id="quantidade" min="1" step="1" value="1">
-                    <button onClick="pegarPedido(this)">Colocar no Carrinho</button>
-                </div>
-            </article>
-        </div>`;
-
-
-        var menu = document.getElementById('menu-pedido-container');       
-        menu.addEventListener('click', function() {
-            closePedido();
-        });
-
-        // Impede a propagação do clique no formulário
-        var div = menu.querySelector('div');
-        div.addEventListener('click', function(event) {
-            event.stopPropagation();
-        });
-
-
-        });
-
-
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
     const carrinho = document.getElementById('carrinho');
     var lista = carrinho.querySelector('ul');
     const conteudoSalvo = localStorage.getItem('carrinhoConteudo');
@@ -183,13 +114,13 @@ const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 async function carregarTrufas() {
   // Busca todas as trufas da tabela 'trufas'
   const { data, error } = await supabaseClient.from('trufas').select('*') // Exibe todas trufas desativadas/ativadas
-
+  console.log(data)
   if (error) {
     console.error('Erro ao buscar trufas:', error);
     return;
   }
 
-  const container = document.getElementById('catalogo');
+  const container = document.querySelector('.catalogo');
   container.innerHTML = ''; // limpa conteúdo anterior
 
   // 3. Para cada trufa recebida do banco...
@@ -222,16 +153,19 @@ async function carregarTrufas() {
     article.innerHTML = `
     <div id="alertas">
         <div class="alcoolico-ativado" style="display: ${alcoolica};">
-        <img src="icons/bebida-vetor.svg" alt="Trufa Alcoolica">
+            <img src="icons/bebida-vetor.svg" alt="Trufa Alcoolica">
         </div>
         <div class="vegana-ativado" style="display: ${vegana};">
-        <img src="icons/vegana-icon.png" alt="Trufa Vegana">
+            <img src="icons/vegana-icon.png" alt="Trufa Vegana">
         </div>
     </div>
     <h3>${sabor}</h3>
     <img class="foto-trufa" src="${principal}" alt="">
-    <button class="botao-pedir" type="submit">Adicionar ao Carrinho</button>
+    <button class="botao-pedir" data-id="${trufa.id}" type="submit">Adicionar ao Carrinho</button>
     `;
+    article.querySelector('.botao-pedir').addEventListener('click', function () {
+        fazendoPedido(this);
+    });
 
     // Adiciona ao container
     container.appendChild(article);
@@ -239,3 +173,38 @@ async function carregarTrufas() {
 };
 // 4. Carrega as trufas ao carregar a página
 carregarTrufas();
+
+function fazendoPedido(botao){
+    const main = document.getElementById('innerHTML-location');
+    const card = botao.closest('article');
+    const name = removerAcentos(card.querySelector('h3').textContent);
+    var img = card.querySelector('img.foto-trufa'); // Seleciona a imagem da trufa
+       
+    
+    main.innerHTML = `
+        <div id="menu-pedido-container">
+            <article >
+                <img src="${img.src}" alt="imagem-produto" ">
+            </article>
+            <article id="menu-pedido">
+                <h3>${name}</h3>
+                <div>
+                    <h4>Escolha o tamanho</h4>
+                    <select name="tamanho" id="tamanho">
+                        <option value="Trufa" data-peso="70">Trufa</option>
+                        <option value="Trufa Mini" data-peso="45">Mini Trufa</option>
+                    </select>
+                    <h4>Sabor da casca</h4>
+                    <select name="casca" id="casca">
+                        <option value="Chocolate Meio Amargo">Chocolate Meio Amargo</option>
+                        <option value="Chocolate Branco">Chocolate Branco</option>
+                        <option value="Chocolate ao Leite">Chocolate ao Leite</option>
+                        <option value="Chocolate Misto">Chocolate Misto ( Ao Leite + Meio Amargo )</option>
+                    </select>
+                    <h4>Quantidade</h4>
+                    <input type="number" name="quantidade" id="quantidade" min="1" step="1" value="1">
+                    <button onClick="pegarPedido(this)">Colocar no Carrinho</button>
+                </div>
+            </article>
+        </div>`;
+}
